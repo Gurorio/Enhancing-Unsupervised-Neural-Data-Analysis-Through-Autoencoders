@@ -1,5 +1,7 @@
 # Master Thesis Autoencoder Models
 
+**Disclaimer**: This README file and the code commentary were drafted with assistance from ChatGPT and reviewed by the author.
+
 This repository contains PyTorch autoencoder models and an experiment notebook developed for a master thesis on learned latent representations from MNIST-derived image data. The code includes a fully connected autoencoder in [`autoEncoder.py`](./autoEncoder.py), convolutional autoencoders in [`ConvAE.py`](./ConvAE.py), and a full training, augmentation, inference, and benchmark workflow in [`Run_code.ipynb`](./Run_code.ipynb).
 
 The thesis work compares latent spaces produced by feedforward and convolutional autoencoders. It supports same-shape reconstruction and reconstruction into a different target shape, which is useful when the input and target representations are related but not identical.
