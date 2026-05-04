@@ -2,9 +2,9 @@
 
 **Disclaimer**: This README file and the code commentary were drafted with assistance from ChatGPT and reviewed by the author.
 
-This repository contains PyTorch autoencoder models and an experiment notebook developed for a master thesis on learned latent representations from MNIST-derived image data. The code includes a fully connected autoencoder in [`autoEncoder.py`](./autoEncoder.py), convolutional autoencoders in [`ConvAE.py`](./ConvAE.py), and a full training, augmentation, inference, and benchmark workflow in [`Run_code.ipynb`](./Run_code.ipynb).
+This repository contains PyTorch autoencoder models and an experiment notebook developed for a master thesis on learned latent representations from MNIST-derived image data. The code includes a fully connected autoencoder in [`autoEncoder.py`](./autoEncoder.py), convolutional autoencoders in [`ConvAE.py`](./ConvAE.py), and a full training, augmentation, inference, and benchmark workflow in [`Run_code.ipynb`](./Run_code.ipynb), in addition to the computation of the ISA-test.
 
-The thesis work compares latent spaces produced by feedforward and convolutional autoencoders. It supports same-shape reconstruction and reconstruction into a different target shape, which is useful when the input and target representations are related but not identical.
+The thesis computes an ISA test on the latent representations from the autoencoders trained on the constructed nonlinear data. It supports same-shape reconstruction and reconstruction into a different target shape, which is useful when the input and target representations are related but not identical.
 
 ## Interesting techniques
 
@@ -33,10 +33,14 @@ The thesis work compares latent spaces produced by feedforward and convolutional
   [`Run_code.ipynb`](./Run_code.ipynb) sets seeds across NumPy, Python, and PyTorch, then uses deterministic train/validation splits and data loader generators.
 
 - **Image augmentation pipeline**  
-  The notebook builds augmented MNIST-derived samples with [Albumentations](https://albumentations.ai/), [imutils](https://github.com/PyImageSearch/imutils), custom salt-and-pepper noise, rotations, crops, and padding.
+  The notebook builds augmented MNIST-derived samples with [Albumentations](https://albumentations.ai/), [imutils](https://github.com/PyImageSearch/imutils), custom salt-and-pepper noise, Gaussian noise, and crops.
 
 - **Bootstrap and benchmark evaluation**  
   [`Run_code.ipynb`](./Run_code.ipynb) includes bootstrap confidence interval utilities, threshold sweeps, and ISA-style benchmark analysis for comparing latent representations.
+
+  - **ISA-test**  
+  [`Run_code.ipynb`](./Run_code.ipynb) includes the ISA-test described in the thesis and a setup for computing it on state initializations.
+  
 
 ## Technologies and libraries
 
@@ -101,5 +105,5 @@ Both convolutional models encode images into a dense latent vector, then decode 
 5. Save model checkpoints.
 6. Load trained models for inference.
 7. Export latent representations.
-8. Run benchmark and ISA-style analysis.
+8. Run benchmark and ISA-test analysis.
 9. Plot reconstruction and evaluation results.
